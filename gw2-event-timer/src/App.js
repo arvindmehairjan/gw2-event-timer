@@ -4,14 +4,10 @@ import './App.css';
 
 const App = () => {
   const date = new Date();
-  const currentTime = date.getHours()
-      + ':' + date.getMinutes()
+  const currentTime = date.getHours() + ':' + date.getMinutes();
 
   const firstArray = jsonData['Core Tyria'][0];
   const bossName = firstArray.bossName;
-  const spawnTimer = firstArray.spawnTimer;
-  console.log(spawnTimer);
-
   console.log(bossName);
 
   const timeDifference = () => {
@@ -30,21 +26,19 @@ const App = () => {
       const hours = Math.floor(timeDiff / (1000 * 60 * 60));
       const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-      // Display the remaining time
-      console.log(`Time remaining: ${hours} hours and ${minutes} minutes`);
+      // Return the text content
+      return `Time remaining: ${hours} hours and ${minutes} minutes`;
     } else {
-      console.log("The target time has already passed for today.");
+      return "Active";
     }
   }
 
   return (
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
-      <p>Current Time: {currentTime} </p>
+      <p>Current Time: {currentTime}</p>
       <p>Upcoming Events:</p>
       <p>{timeDifference()}</p>
-
-
     </div>
   );
 };
