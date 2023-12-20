@@ -1,5 +1,5 @@
 {
     "Core Tyria":
         {"bossName":"Tequatl",
-        "spawnTimer":"17:53"}
+        "spawnTimer": ["18:00", "20:00"]}
 }

@@ -6,9 +6,9 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
   const [bossInfo, setBossInfo] = useState({
     bossName: '',
-    spawnTimer: ''
+    spawnTimer: []
   });
-  const [countdown, setCountdown] = useState('');
+  const [countdowns, setCountdowns] = useState([]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -18,28 +18,26 @@ const App = () => {
     const coreTyriaEvent = jsonData['Core Tyria'];
 
     if (coreTyriaEvent) {
-      const spawnTime = new Date();
-      const [hours, minutes] = coreTyriaEvent.spawnTimer.split(':');
-      spawnTime.setHours(parseInt(hours, 10));
-      spawnTime.setMinutes(parseInt(minutes, 10));
-
-      // Calculate the countdown of the event
-      const timeDifference = spawnTime.getTime() - new Date().getTime();
-
-      // Calculate remaining hours and minutes
-      const hoursRemaining = Math.floor(timeDifference / (1000 * 60 * 60));
-      const minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
       setBossInfo({
         bossName: coreTyriaEvent.bossName,
         spawnTimer: coreTyriaEvent.spawnTimer
       });
 
-      if (timeDifference <= 0) {
-        setCountdown('Active');
-      } else {
-        setCountdown(`${hoursRemaining}h ${minutesRemaining}m`);
-      }
+      const newCountdowns = coreTyriaEvent.spawnTimer.map(spawnTime => {
+        const spawnDateTime = new Date();
+        const [hours, minutes] = spawnTime.split(':');
+        spawnDateTime.setHours(parseInt(hours, 10));
+        spawnDateTime.setMinutes(parseInt(minutes, 10));
+
+        const timeDifference = spawnDateTime.getTime() - new Date().getTime();
+
+        const hoursRemaining = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+        return timeDifference <= 0 ? 'Active' : `Countdown ${hoursRemaining}h ${minutesRemaining}m`;
+      });
+
+      setCountdowns(newCountdowns);
     }
 
     return () => clearInterval(intervalId);
@@ -52,7 +50,12 @@ const App = () => {
       <h1>Guild Wars 2 - Meta Event Timer</h1>
       <p>Current Time: {currentTime}</p>
       <p>Boss Name: {bossInfo.bossName}</p>
-      <p>Countdown: Event {countdown}</p>
+      <p>Spawn Timers:</p>
+      <ul>
+        {bossInfo.spawnTimer.map((spawnTime, index) => (
+          <li key={index}>Event: {countdowns[index]}</li>
+        ))}
+      </ul>
     </div>
   );
 };
