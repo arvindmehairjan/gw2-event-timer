@@ -1,20 +1,28 @@
+// Importing necessary dependencies and files
 import React, { useState, useEffect } from 'react';
-import jsonData from './data/events.json';
-import './App.css';
+import jsonData from './data/events.json'; // Importing event data from a JSON file
+import './App.css'; // Importing styles
 
+// Functional component definition
 const App = () => {
+  // State variables using the useState hook
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
   const [upcomingEvents, setUpcomingEvents] = useState([]);
 
+  // useEffect hook for handling side effects
   useEffect(() => {
+    // Interval to update the current time every second
     const intervalId = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString());
     }, 1000);
 
+    // Extracting event data for 'Core Tyria' from the imported JSON
     const coreTyriaEvent = jsonData['Core Tyria'];
 
+    // Processing the event data to filter upcoming events
     if (coreTyriaEvent) {
       const upcomingEventsData = coreTyriaEvent.reduce((accumulator, event) => {
+        // Filtering spawn times within a specific time range
         const upcomingSpawnTimes = event.spawnTimer.filter(spawnTime => {
           const spawnDateTime = new Date();
           const [hours, minutes] = spawnTime.split(':');
@@ -26,6 +34,7 @@ const App = () => {
           return timeDifference > -30 * 60 * 1000 && timeDifference <= 2 * 60 * 60 * 1000;
         });
 
+        // Filtering and processing events within the specified time range
         if (upcomingSpawnTimes.length > 0) {
           accumulator.push({
             bossName: event.bossName,
@@ -64,14 +73,18 @@ const App = () => {
       // Sort the upcoming events based on the nextSpawnTime
       upcomingEventsData.sort((a, b) => a.nextSpawnTime - b.nextSpawnTime);
 
+      // Setting state with the processed upcoming events
       setUpcomingEvents(upcomingEventsData);
     }
 
+    // Clearing the interval when the component is unmounted
     return () => clearInterval(intervalId);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Dependencies for the useEffect hook
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTime, new Date()]);
 
+  // JSX for rendering the component
   return (
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
@@ -88,4 +101,5 @@ const App = () => {
   );
 };
 
+// Exporting the component as the default export
 export default App;
