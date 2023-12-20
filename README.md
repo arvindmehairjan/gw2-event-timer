@@ -14,3 +14,4 @@
 - Add unit tests
 - Deploy on netlify
 - Get custom domain
+- Split into different components
