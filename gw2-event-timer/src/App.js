@@ -19,18 +19,7 @@ const App = () => {
       <p>Current Time: {currentTime.toLocaleTimeString()} </p>
       <p>Upcoming Events:</p>
 
-      {Object.keys(jsonData).map((region, regionIndex) => (
-        <div key={regionIndex}>
-          <h2>{region}</h2>
-          <ul>
-            {jsonData[region].map((event, eventIndex) => (
-              <li key={eventIndex}>
-                <strong>{event.bossName}</strong> - Spawn Timer: {event.spawnTimer.join(', ')}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      
     </div>
   );
 };
