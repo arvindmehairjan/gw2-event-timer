@@ -23,7 +23,7 @@ const App = () => {
       spawnTime.setHours(parseInt(hours, 10));
       spawnTime.setMinutes(parseInt(minutes, 10));
 
-      // Calculate the countdown of event
+      // Calculate the countdown of the event
       const timeDifference = spawnTime.getTime() - new Date().getTime();
 
       // Calculate remaining hours and minutes
@@ -35,12 +35,16 @@ const App = () => {
         spawnTimer: coreTyriaEvent.spawnTimer
       });
 
-      setCountdown(`${hoursRemaining}h ${minutesRemaining}m`);
+      if (timeDifference <= 0) {
+        setCountdown('Active');
+      } else {
+        setCountdown(`${hoursRemaining}h ${minutesRemaining}m`);
+      }
     }
 
     return () => clearInterval(intervalId);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTime, new Date()]);
 
   return (
@@ -48,7 +52,7 @@ const App = () => {
       <h1>Guild Wars 2 - Meta Event Timer</h1>
       <p>Current Time: {currentTime}</p>
       <p>Boss Name: {bossInfo.bossName}</p>
-      <p>Countdown: Event start in {countdown}</p>
+      <p>Countdown: Event {countdown}</p>
     </div>
   );
 };
