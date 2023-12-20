@@ -9,11 +9,13 @@ const App = () => {
   // Access the "Core Tyria" array
   const coreTyriaArray = jsonData['Core Tyria'];
 
-  const findClosestBoss = () => {
-    let closestBoss = null;
-    let minTimeDiff = Infinity;
+  const findClosestBosses = () => {
+    let closestBosses = [];
 
     coreTyriaArray.forEach(entry => {
+      let closestBoss = null;
+      let minTimeDiff = Infinity;
+
       entry.spawnTimer.forEach(eventTime => {
         const [hours, minutes] = eventTime.split(':').map(Number);
         const eventTimeInMinutes = hours * 60 + minutes;
@@ -28,12 +30,14 @@ const App = () => {
           };
         }
       });
+
+      closestBosses.push(closestBoss);
     });
 
-    return closestBoss;
+    return closestBosses;
   };
 
-  const closestBoss = findClosestBoss();
+  const closestBosses = findClosestBosses();
 
   const formatTime = (time) => {
     const hours = Math.floor(time / 60);
@@ -44,13 +48,16 @@ const App = () => {
   return (
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
-      {closestBoss ? (
-        <p>
-          {closestBoss.bossName} - Time remaining: {formatTime(closestBoss.timeRemaining)}
-        </p>
-      ) : (
-        <p>No upcoming events</p>
-      )}
+      <p>Current Time: {currentTime}</p>
+      {closestBosses.map((closestBoss, index) => (
+        closestBoss ? (
+          <p key={index}>
+             {closestBoss.bossName} - Time remaining: {formatTime(closestBoss.timeRemaining)}
+          </p>
+        ) : (
+          <p key={index}>No upcoming events for {coreTyriaArray[index].bossName}</p>
+        )
+      ))}
     </div>
   );
 };
