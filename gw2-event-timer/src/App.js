@@ -32,6 +32,9 @@ const App = () => {
       upcomingBosses = upcomingBosses.concat(upcomingEvents);
     });
 
+    // Sort events by the least remaining time
+    upcomingBosses.sort((a, b) => a.timeRemaining - b.timeRemaining);
+
     return upcomingBosses;
   };
 
@@ -46,7 +49,6 @@ const App = () => {
   return (
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
-      <p>Current Time: {currentTime}</p>
       {upcomingBosses.length > 0 ? (
         upcomingBosses.map((upcomingBoss, index) => (
           <p key={index}>
