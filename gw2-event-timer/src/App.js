@@ -23,6 +23,7 @@ const App = () => {
       spawnTime.setHours(parseInt(hours, 10));
       spawnTime.setMinutes(parseInt(minutes, 10));
 
+      // Calculate the countdown of event
       const timeDifference = spawnTime.getTime() - new Date().getTime();
 
       // Calculate remaining hours and minutes
@@ -38,6 +39,7 @@ const App = () => {
     }
 
     return () => clearInterval(intervalId);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTime, new Date()]);
 
