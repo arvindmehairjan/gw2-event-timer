@@ -9,35 +9,33 @@ const App = () => {
   // Access the "Core Tyria" array
   const coreTyriaArray = jsonData['Core Tyria'];
 
-  const findClosestBosses = () => {
-    let closestBosses = [];
+  const findUpcomingBosses = () => {
+    let upcomingBosses = [];
 
     coreTyriaArray.forEach(entry => {
-      let closestBoss = null;
-      let minTimeDiff = Infinity;
+      let upcomingEvents = [];
 
       entry.spawnTimer.forEach(eventTime => {
         const [hours, minutes] = eventTime.split(':').map(Number);
         const eventTimeInMinutes = hours * 60 + minutes;
         const timeDiff = eventTimeInMinutes - currentTime;
 
-        // Check if the event is in the future and closer than the current closest event
-        if (timeDiff >= 0 && timeDiff < minTimeDiff) {
-          minTimeDiff = timeDiff;
-          closestBoss = {
+        // Check if the event is upcoming within the next two hours
+        if (timeDiff >= 0 && timeDiff <= 120) {
+          upcomingEvents.push({
             bossName: entry.bossName,
             timeRemaining: timeDiff
-          };
+          });
         }
       });
 
-      closestBosses.push(closestBoss);
+      upcomingBosses = upcomingBosses.concat(upcomingEvents);
     });
 
-    return closestBosses;
+    return upcomingBosses;
   };
 
-  const closestBosses = findClosestBosses();
+  const upcomingBosses = findUpcomingBosses();
 
   const formatTime = (time) => {
     const hours = Math.floor(time / 60);
@@ -49,15 +47,15 @@ const App = () => {
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
       <p>Current Time: {currentTime}</p>
-      {closestBosses.map((closestBoss, index) => (
-        closestBoss ? (
+      {upcomingBosses.length > 0 ? (
+        upcomingBosses.map((upcomingBoss, index) => (
           <p key={index}>
-             {closestBoss.bossName} - Time remaining: {formatTime(closestBoss.timeRemaining)}
+            {upcomingBoss.bossName} - Time remaining: {formatTime(upcomingBoss.timeRemaining)}
           </p>
-        ) : (
-          <p key={index}>No upcoming events for {coreTyriaArray[index].bossName}</p>
-        )
-      ))}
+        ))
+      ) : (
+        <p>No upcoming events within the next two hours</p>
+      )}
     </div>
   );
 };
