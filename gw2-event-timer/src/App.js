@@ -23,7 +23,7 @@ const App = () => {
 
           const timeDifference = spawnDateTime.getTime() - new Date().getTime();
 
-          return timeDifference > 0 && timeDifference <= 2 * 60 * 60 * 1000;
+          return timeDifference > -30 * 60 * 1000 && timeDifference <= 2 * 60 * 60 * 1000;
         });
 
         if (upcomingSpawnTimes.length > 0) {
@@ -47,10 +47,13 @@ const App = () => {
 
               const timeDifference = spawnDateTime.getTime() - new Date().getTime();
 
-              const hoursRemaining = Math.floor(timeDifference / (1000 * 60 * 60));
-              const minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+              const isActive = timeDifference <= 0 && timeDifference > -30 * 60 * 1000;
+              const remainingTime = isActive ? 30 * 60 * 1000 + timeDifference : timeDifference;
 
-              return timeDifference <= 0 ? 'Active' : `${hoursRemaining}h ${minutesRemaining}m`;
+              const hoursRemaining = Math.floor(remainingTime / (1000 * 60 * 60));
+              const minutesRemaining = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+
+              return isActive ? 'Active' : `${hoursRemaining}h ${minutesRemaining}m`;
             }),
           });
         }
