@@ -29,6 +29,16 @@ const App = () => {
         if (upcomingSpawnTimes.length > 0) {
           accumulator.push({
             bossName: event.bossName,
+            nextSpawnTime: upcomingSpawnTimes.reduce((earliest, spawnTime) => {
+              const spawnDateTime = new Date();
+              const [hours, minutes] = spawnTime.split(':');
+              spawnDateTime.setHours(parseInt(hours, 10));
+              spawnDateTime.setMinutes(parseInt(minutes, 10));
+
+              const timeDifference = spawnDateTime.getTime() - new Date().getTime();
+
+              return timeDifference < earliest ? timeDifference : earliest;
+            }, Infinity),
             countdowns: upcomingSpawnTimes.map(spawnTime => {
               const spawnDateTime = new Date();
               const [hours, minutes] = spawnTime.split(':');
@@ -47,6 +57,9 @@ const App = () => {
 
         return accumulator;
       }, []);
+
+      // Sort the upcoming events based on the nextSpawnTime
+      upcomingEventsData.sort((a, b) => a.nextSpawnTime - b.nextSpawnTime);
 
       setUpcomingEvents(upcomingEventsData);
     }
