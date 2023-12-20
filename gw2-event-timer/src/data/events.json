@@ -1,5 +1,16 @@
 {
-    "Core Tyria":
-        {"bossName":"Tequatl",
-        "spawnTimer": ["18:00", "20:00"]}
-}
+    "Core Tyria": [
+      {
+        "bossName": "Tequatl the Sunless",
+        "spawnTimer": ["20:00", "01:00", "04:00", "08:00", "12:30", "17:00"]
+      },
+      {
+        "bossName": "Triple Trouble",
+        "spawnTimer": ["18:00", "21:00", "02:00", "05:00", "09:00", "13:30"]
+      },
+      {
+        "bossName": "Karka Queen",
+        "spawnTimer": ["19:00", "00:00", "03:00", "07:00", "11:30", "16:00"]
+      }
+    ]
+  }
