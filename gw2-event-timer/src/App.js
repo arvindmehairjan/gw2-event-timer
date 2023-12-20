@@ -4,41 +4,53 @@ import './App.css';
 
 const App = () => {
   const date = new Date();
-  const currentTime = date.getHours() + ':' + date.getMinutes();
+  const currentTime = date.getHours() * 60 + date.getMinutes(); // Convert current time to minutes
 
-  const firstArray = jsonData['Core Tyria'][0];
-  const bossName = firstArray.bossName;
-  console.log(bossName);
+  // Access the "Core Tyria" array
+  const coreTyriaArray = jsonData['Core Tyria'];
 
-  const timeDifference = () => {
-    const now = new Date();
+  const findClosestBoss = () => {
+    let closestBoss = null;
+    let minTimeDiff = Infinity;
 
-    // Set the target time (02:04) for today
-    const targetTime = new Date();
-    targetTime.setHours(2, 4, 0, 0);
+    coreTyriaArray.forEach(entry => {
+      entry.spawnTimer.forEach(eventTime => {
+        const [hours, minutes] = eventTime.split(':').map(Number);
+        const eventTimeInMinutes = hours * 60 + minutes;
+        const timeDiff = eventTimeInMinutes - currentTime;
 
-    // Calculate the time difference in milliseconds
-    const timeDiff = targetTime - now;
+        // Check if the event is in the future and closer than the current closest event
+        if (timeDiff >= 0 && timeDiff < minTimeDiff) {
+          minTimeDiff = timeDiff;
+          closestBoss = {
+            bossName: entry.bossName,
+            timeRemaining: timeDiff
+          };
+        }
+      });
+    });
 
-    // Check if the target time is in the future
-    if (timeDiff > 0) {
-      // Calculate hours and minutes
-      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    return closestBoss;
+  };
 
-      // Return the text content
-      return `Time remaining: ${hours} hours and ${minutes} minutes`;
-    } else {
-      return "Active";
-    }
-  }
+  const closestBoss = findClosestBoss();
+
+  const formatTime = (time) => {
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
+    return `${hours} hours and ${minutes} minutes`;
+  };
 
   return (
     <div className="App">
       <h1>Guild Wars 2 - Meta Event Timer</h1>
-      <p>Current Time: {currentTime}</p>
-      <p>Upcoming Events:</p>
-      <p>{timeDifference()}</p>
+      {closestBoss ? (
+        <p>
+          {closestBoss.bossName} - Time remaining: {formatTime(closestBoss.timeRemaining)}
+        </p>
+      ) : (
+        <p>No upcoming events</p>
+      )}
     </div>
   );
 };
