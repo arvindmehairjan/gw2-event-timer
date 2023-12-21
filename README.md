@@ -2,7 +2,6 @@
 - Add the bosses/events of the expansions/living seasons (HoT, PoF, EoD, SoTo, LS1, LS2, LS3, LS4, IBS)
 - Add item code for bosses to copy from clipboard
 - Add tailwind functionality
-- Add table for bosses
 - Add footer
 - Add navbar
 - Add about/license
@@ -12,3 +11,4 @@
 - Deploy on netlify
 - Get custom domain
 - Split into different components
+- Add routing
