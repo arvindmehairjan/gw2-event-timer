@@ -16,23 +16,23 @@ const NavBar = () => {
     <div className="bg-orange-800 text-white p-4">
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center space-x-4">
-        <a href="#" className="hover:text-gray-300">Home</a>
+        <a href="#" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</a>
         <div className="relative group">
           <a
             href="#"
-            className="hover:text-gray-300"
+            className="hover:text-gray-300 transition duration-300 ease-in-out"
             onClick={toggleEventsSubMenu}
           >
             Events
           </a>
           {isEventsSubMenuOpen && (
             <div className="absolute mt-2 space-y-2 bg-orange-800 border border-orange-700 rounded-md z-10 ">
-              <a href="#" className="block px-4 py-2">Number 1</a>
-              <a href="#" className="block px-4 py-2">Number 2</a>
+              <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 1</a>
+              <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 2</a>
             </div>
           )}
         </div>
-        <a href="#" className="hover:text-gray-300">Contact</a>
+        <a href="#" className="hover:text-gray-300 transition duration-300 ease-in-out">Contact</a>
       </div>
 
       {/* Mobile Menu */}
@@ -57,23 +57,23 @@ const NavBar = () => {
       {/* Mobile Sidebar */}
       {isMobileMenuOpen && (
         <div className="lg:hidden">
-          <a href="#" className="block px-4 py-2">Home</a>
+          <a href="#" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</a>
           <div className="group relative">
             <a
               href="#"
-              className="block px-4 py-2"
+              className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300"
               onClick={toggleEventsSubMenu}
             >
               Events
             </a>
             {isEventsSubMenuOpen && (
-              <div className="absolute mt-2 space-y-2 bg-orange-900 border border-orange-700 rounded-md z-10">
-                <a href="#" className="block px-4 py-2">Number 1</a>
-                <a href="#" className="block px-4 py-2">Number 2</a>
+              <div className="absolute mt-2 space-y-2 bg-orange-900 border border-orange-700 rounded-md z-10 transition duration-300 ease-in-out">
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 1</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 2</a>
               </div>
             )}
           </div>
-          <a href="#" className="block px-4 py-2">Contact</a>
+          <a href="#" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</a>
         </div>
       )}
     </div>
