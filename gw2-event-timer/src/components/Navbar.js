@@ -1,22 +1,48 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-// NavBar.js
-
-import React from 'react';
+import React, { useState } from 'react';
 
 const NavBar = () => {
-  return (
-    <nav className="bg-blue-400 p-4">
-    <div className="container mx-auto flex justify-between items-center">
-      <div className="text-white font-bold"></div>
+  const [isOpen, setIsOpen] = useState(false);
 
-      <div className="flex items-center space-x-4">
-        <a href="#" className="text-white">Home</a>
-        <a href="#" className="text-white">About</a>
-        <a href="#" className="text-white">Services</a>
-        <a href="#" className="text-white">Contact</a>
+  return (
+    <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+      <div className="flex items-center justify-between px-4 py-3 sm:p-0">
+        <div>
+          <img className="h-8" src="/img/logo-inverted.svg" alt="Workcation" />
+        </div>
+        <div className="sm:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+          >
+            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              {isOpen ? (
+                <path
+                  fillRule="evenodd"
+                  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                />
+              ) : (
+                <path
+                  fillRule="evenodd"
+                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
-  </nav>
+      <nav className={`px-2 pt-2 pb-4 sm:flex ${isOpen ? 'block' : 'hidden'} sm:p-0`}>
+        <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+          Home
+        </a>
+        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+          Events
+        </a>
+        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+          Contact
+        </a>
+      </nav>
+    </header>
   );
 };
 
