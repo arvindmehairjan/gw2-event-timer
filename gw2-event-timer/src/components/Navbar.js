@@ -58,55 +58,55 @@ const NavBar = () => {
         className={`px-2 pt-2 pb-4 sm:flex ${isSubMenuOpen ? 'block' : 'hidden'} sm:p-0`}
         ref={menuRef}
       >
-        <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+        <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950">
           Home
         </a>
         <div className="mt-1 sm:mt-0 sm:ml-2 relative">
           <a
             href="#"
             onClick={handleSubMenuClick}
-            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800"
+            className="block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950"
           >
             Events
           </a>
           <div
-            className={`absolute z-10 left-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-lg ${
+            className={`absolute z-10 left-0 mt-2 w-40 bg-orange-800 rounded-lg shadow-lg ${
               isSubMenuOpen ? 'block' : 'hidden'
             }`}
           >
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Core Tyria
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Living World S1
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Living World S2
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Heart of Thorns
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Living World S3
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Path of Fire
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Living World S4
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               The Icebrood Saga
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               End of Dragons
             </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
               Secrets of the Obscure
             </a>
           </div>
         </div>
-        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950 sm:mt-0 sm:ml-2">
           Contact
         </a>
       </nav>
