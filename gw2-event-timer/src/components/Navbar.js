@@ -1,116 +1,82 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const NavBar = () => {
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isEventsSubMenuOpen, setEventsSubMenuOpen] = useState(false);
 
-  const handleSubMenuClick = (e) => {
-    e.preventDefault();
-    setIsSubMenuOpen(!isSubMenuOpen);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleSubMenuClose = () => {
-    setIsSubMenuOpen(false);
+  const toggleEventsSubMenu = () => {
+    setEventsSubMenuOpen(!isEventsSubMenuOpen);
   };
-
-  // Close the submenu when clicking outside of it
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        handleSubMenuClose();
-      }
-    };
-
-    document.addEventListener('mousedown', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
 
   return (
-    <header className="bg-orange-800 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-      <div className="flex items-center justify-between px-4 py-3 sm:p-0">
-        <div></div>
-        <div className="sm:hidden">
-          <button
-            onClick={handleSubMenuClick}
-            type="button"
-            className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
-          >
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              {isSubMenuOpen ? (
-                <path
-                  fillRule="evenodd"
-                  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                />
-              ) : (
-                <path
-                  fillRule="evenodd"
-                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-      <nav
-        className={`px-2 pt-2 pb-4 sm:flex ${isSubMenuOpen ? 'block' : 'hidden'} sm:p-0`}
-        ref={menuRef}
-      >
-        <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950">
-          Home
-        </a>
-        <div className="mt-1 sm:mt-0 sm:ml-2 relative">
+    <div className="bg-orange-800 text-white p-4">
+      {/* Desktop Menu */}
+      <div className="hidden lg:flex items-center space-x-4">
+        <a href="#" className="hover:text-gray-300">Home</a>
+        <div className="relative group">
           <a
             href="#"
-            onClick={handleSubMenuClick}
-            className="block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950"
+            className="hover:text-gray-300"
+            onClick={toggleEventsSubMenu}
           >
             Events
           </a>
-          <div
-            className={`absolute z-10 left-0 mt-2 w-40 bg-orange-800 rounded-lg shadow-lg ${
-              isSubMenuOpen ? 'block' : 'hidden'
-            }`}
-          >
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Core Tyria
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Living World S1
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Living World S2
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Heart of Thorns
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Living World S3
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Path of Fire
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Living World S4
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              The Icebrood Saga
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              End of Dragons
-            </a>
-            <a href="#" className="block py-2 px-4 text-white hover:bg-orange-950">
-              Secrets of the Obscure
-            </a>
-          </div>
+          {isEventsSubMenuOpen && (
+            <div className="absolute mt-2 space-y-2 bg-orange-800 border border-orange-700 rounded-md z-10 ">
+              <a href="#" className="block px-4 py-2">Number 1</a>
+              <a href="#" className="block px-4 py-2">Number 2</a>
+            </div>
+          )}
         </div>
-        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-orange-950 sm:mt-0 sm:ml-2">
-          Contact
-        </a>
-      </nav>
-    </header>
+        <a href="#" className="hover:text-gray-300">Contact</a>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className="lg:hidden flex items-center justify-between">
+        <a href="#" className="text-xl font-bold"></a>
+        <button
+          onClick={toggleMobileMenu}
+          className="text-white focus:outline-none lg:hidden"
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Sidebar */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden">
+          <a href="#" className="block px-4 py-2">Home</a>
+          <div className="group relative">
+            <a
+              href="#"
+              className="block px-4 py-2"
+              onClick={toggleEventsSubMenu}
+            >
+              Events
+            </a>
+            {isEventsSubMenuOpen && (
+              <div className="absolute mt-2 space-y-2 bg-orange-900 border border-orange-700 rounded-md z-10">
+                <a href="#" className="block px-4 py-2">Number 1</a>
+                <a href="#" className="block px-4 py-2">Number 2</a>
+              </div>
+            )}
+          </div>
+          <a href="#" className="block px-4 py-2">Contact</a>
+        </div>
+      )}
+    </div>
   );
 };
 
