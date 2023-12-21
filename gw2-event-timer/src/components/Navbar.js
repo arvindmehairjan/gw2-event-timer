@@ -20,7 +20,7 @@ const NavBar = () => {
         <div className="relative group">
           <a
             href="#"
-            className="hover:text-gray-300 transition duration-300 ease-in-out"
+            className="hover:text-orange-300 transition duration-300 ease-in-out"
             onClick={toggleEventsSubMenu}
           >
             Events
@@ -32,7 +32,7 @@ const NavBar = () => {
             </div>
           )}
         </div>
-        <a href="#" className="hover:text-gray-300 transition duration-300 ease-in-out">Contact</a>
+        <a href="#" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</a>
       </div>
 
       {/* Mobile Menu */}
