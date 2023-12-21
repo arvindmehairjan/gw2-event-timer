@@ -1,17 +1,20 @@
 import React from 'react';
 import './App.css';
-import TableView from './components/Table';
-import NavBar from './components/Navbar';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import HomePage from './pages/Homepage';
+import CoreTyriaPage from './pages/CoreTyria';
+
 const App = () => {
 
   return (
     <div className="App">
-      <NavBar/>
-      <Hero/>
-      <TableView region="Core Tyria"/>
-      <Footer />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="core-tyria" element={<CoreTyriaPage />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 };
