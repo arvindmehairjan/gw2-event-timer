@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleSubMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
       <div className="flex items-center justify-between px-4 py-3 sm:p-0">
@@ -11,7 +15,7 @@ const NavBar = () => {
         </div>
         <div className="sm:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleSubMenu}
             type="button"
             className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
           >
@@ -35,9 +39,52 @@ const NavBar = () => {
         <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
           Home
         </a>
-        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
-          Events
-        </a>
+        <div className="mt-1 sm:mt-0 sm:ml-2 relative">
+          <a
+            href="#"
+            onClick={toggleSubMenu}
+            className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800"
+          >
+            Events
+          </a>
+          <div
+            className={`absolute z-10 left-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-lg ${
+              isOpen ? 'block' : 'hidden'
+            }`}
+          >
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Core Tyria
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Living World S1
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Living World S2
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Heart of Thorns
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Living World S3
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Path of Fire
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Living World Season 4
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Icebrood Saga
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              End of Dragons
+            </a>
+            <a href="#" className="block py-2 px-4 text-white hover:bg-gray-700">
+              Secrets of The Obscure
+            </a>
+
+          </div>
+        </div>
         <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
           Contact
         </a>
