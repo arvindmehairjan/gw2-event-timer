@@ -48,16 +48,29 @@ const TableView = (props) => {
   };
 
   return (
-    <div>
-      {upcomingBosses.length > 0 ? (
-        upcomingBosses.map((upcomingBoss, index) => (
-          <p key={index}>
-            {upcomingBoss.bossName} - Time remaining: {formatTime(upcomingBoss.timeRemaining)}
-          </p>
-        ))
-      ) : (
-        <p>No upcoming events within the next two hours</p>
-      )}
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-white border border-gray-300">
+        <thead>
+          <tr>
+            <th className="py-2 px-4 border-b">Boss Name</th>
+            <th className="py-2 px-4 border-b">Time Remaining</th>
+          </tr>
+        </thead>
+        <tbody>
+          {upcomingBosses.length > 0 ? (
+            upcomingBosses.map((upcomingBoss, index) => (
+              <tr key={index}>
+                <td className="py-2 px-4 border-b">{upcomingBoss.bossName}</td>
+                <td className="py-2 px-4 border-b">{formatTime(upcomingBoss.timeRemaining)}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="2" className="py-4 px-4 text-center">No upcoming events within the next two hours</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
