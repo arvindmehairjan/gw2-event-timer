@@ -1,9 +1,9 @@
 # TODO
 - Add the bosses/events of the expansions/living seasons (HoT, PoF, EoD, SoTo, LS1, LS2, LS3, LS4, IBS)
 - Add item code for bosses to copy from clipboard
-- Add tailwind functionality
-- Add footer
 - Add navbar
+- Add links in navbar
+- Create contact page
 - Add about/license
 - Configure pipeline with github actions
 - Dockerize
