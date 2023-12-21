@@ -52,8 +52,8 @@ const TableView = (props) => {
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr>
-            <th className="py-2 px-4 border-b">Boss Name</th>
-            <th className="py-2 px-4 border-b">Time Remaining</th>
+            <th className="py-2 px-4 border-b text-left">Boss Name</th>
+            <th className="py-2 px-4 border-b text-left">Time Remaining</th>
           </tr>
         </thead>
         <tbody>
