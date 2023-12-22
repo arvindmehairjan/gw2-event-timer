@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import jsonData from '../data/events.json';
 
 const TableView = (props) => {
+  const [copiedLink, setCopiedLink] = useState(null);
+
+  const handleCopyToClipboard = (linkCode) => {
+    navigator.clipboard.writeText(linkCode);
+    setCopiedLink(linkCode);
+
+    // Clear the copied link after a brief period
+    setTimeout(() => {
+      setCopiedLink(null);
+    }, 2000);
+  };
+
   const date = new Date();
-
-  // Convert current time to minutes
   const currentTime = date.getHours() * 60 + date.getMinutes();
-
-  // Access the events json
   const tyriaRegions = jsonData[props.region];
 
   const findUpcomingBosses = () => {
@@ -21,11 +29,11 @@ const TableView = (props) => {
         const eventTimeInMinutes = hours * 60 + minutes;
         const timeDiff = eventTimeInMinutes - currentTime;
 
-        // Check if the event is upcoming within the next two hours
         if (timeDiff >= 0 && timeDiff <= 120) {
           upcomingEvents.push({
             bossName: entry.bossName,
-            timeRemaining: timeDiff
+            timeRemaining: timeDiff,
+            linkCode: entry.linkCode || null, // Include link code in the data or null if not available
           });
         }
       });
@@ -33,7 +41,6 @@ const TableView = (props) => {
       upcomingBosses = upcomingBosses.concat(upcomingEvents);
     });
 
-    // Sort events by the least remaining time
     upcomingBosses.sort((a, b) => a.timeRemaining - b.timeRemaining);
 
     return upcomingBosses;
@@ -54,6 +61,7 @@ const TableView = (props) => {
           <tr>
             <th className="py-2 px-4 border-b text-left">Boss Name</th>
             <th className="py-2 px-4 border-b text-left">Time Remaining</th>
+            <th className="py-2 px-4 border-b text-left">Linkcode</th>
           </tr>
         </thead>
         <tbody>
@@ -62,11 +70,25 @@ const TableView = (props) => {
               <tr key={index}>
                 <td className="py-2 px-4 border-b">{upcomingBoss.bossName}</td>
                 <td className="py-2 px-4 border-b">{formatTime(upcomingBoss.timeRemaining)}</td>
+                <td className="py-2 px-4 border-b">
+                  {upcomingBoss.linkCode ? (
+                    <>
+                      <button onClick={() => handleCopyToClipboard(upcomingBoss.linkCode)}>
+                        Copy location
+                      </button>
+                      {copiedLink === upcomingBoss.linkCode && (
+                        <span style={{ marginLeft: '5px', color: 'green' }}>Copied!</span>
+                      )}
+                    </>
+                  ) : (
+                    'N/A'
+                  )}
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="2" className="py-4 px-4 text-center">No upcoming events within the next two hours</td>
+              <td colSpan="3" className="py-4 px-4 text-center">No upcoming events within the next two hours</td>
             </tr>
           )}
         </tbody>
