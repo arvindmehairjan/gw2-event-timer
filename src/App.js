@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage';
 import LivingWorldPage from './pages/LivingWorldPage';
 import CoreTyriaPage from './pages/CoreTyriaPage';
 import HeartOfThornsPage from './pages/HeartOfThorns';
+import PathOfFirePage from './pages/PathOfFirePage';
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="core-tyria" element={<CoreTyriaPage />} />
             <Route path="living-world" element={<LivingWorldPage />} />
             <Route path="heart-of-thorns" element={<HeartOfThornsPage />} />
+            <Route path="path-of-fire" element={<PathOfFirePage />} />
           </Routes>
         </BrowserRouter>
     </div>
