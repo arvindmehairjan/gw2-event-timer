@@ -1,8 +1,8 @@
 // tailwind.config.js
 module.exports = {
-  purge: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html",
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
   ],
   // other Tailwind CSS configurations go here
 };
