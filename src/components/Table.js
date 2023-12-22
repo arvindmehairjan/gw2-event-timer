@@ -19,7 +19,7 @@ const Table = (props) => {
     return `${hours} hours and ${minutes} minutes`;
   };
 
-  const isTimeCritical = (timeRemaining) => timeRemaining <= 5;
+  const isTimeCritical = (timeRemaining) => timeRemaining <= 10;
 
   const getBossesWithinTimeRange = (entry, index) => {
     return entry.spawnTimer
