@@ -26,13 +26,22 @@ const Table = (props) => {
       .filter((eventTime) => {
         const [hours, minutes] = eventTime.split(':').map(Number);
         const eventTimeInMinutes = hours * 60 + minutes;
-        const timeDiff = eventTimeInMinutes - currentTime;
+
+        // Calculate time difference considering the possibility of events crossing into the next day
+        const timeDiff = eventTimeInMinutes > currentTime
+          ? eventTimeInMinutes - currentTime
+          : (24 * 60 - currentTime) + eventTimeInMinutes;
+
         return timeDiff >= 0 && timeDiff <= 120;
       })
       .map((eventTime) => {
         const [hours, minutes] = eventTime.split(':').map(Number);
         const eventTimeInMinutes = hours * 60 + minutes;
-        const timeDiff = eventTimeInMinutes - currentTime;
+
+        // Calculate time difference considering the possibility of events crossing into the next day
+        const timeDiff = eventTimeInMinutes > currentTime
+          ? eventTimeInMinutes - currentTime
+          : (24 * 60 - currentTime) + eventTimeInMinutes;
 
         return {
           bossName: entry.bossName,
