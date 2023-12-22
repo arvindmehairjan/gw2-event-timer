@@ -68,8 +68,16 @@ const NavBar = () => {
             </a>
             {isEventsSubMenuOpen && (
               <div className="absolute mt-2 space-y-2 bg-orange-900 border border-orange-700 rounded-md z-10 transition duration-300 ease-in-out">
-                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 1</a>
-                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Number 2</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Core Tyria</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Living World S1</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Living World S2</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Heart of Thorns</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Living World S3</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Path of Fire</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Living World S4</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Icebrood Saga</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">End of Dragons</a>
+                <a href="#" className="block px-4 py-2 hover:text-yellow-300">Secrets of The Obscure</a>
               </div>
             )}
           </div>
