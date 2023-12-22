@@ -13,13 +13,13 @@ const NavBar = () => {
     <div className="bg-orange-800 text-white p-4">
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center space-x-4">
-        <a href="#" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</a>
+        <a href="/" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</a>
         <a href="#" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</a>
       </div>
 
       {/* Mobile Menu */}
       <div className="lg:hidden flex items-center justify-between">
-        <a href="#" className="text-xl font-bold"></a>
+        <a href="/" className="text-xl font-bold"></a>
         <button
           onClick={toggleMobileMenu}
           className="text-white focus:outline-none lg:hidden"
@@ -39,7 +39,7 @@ const NavBar = () => {
       {/* Mobile Sidebar */}
       {isMobileMenuOpen && (
         <div className="lg:hidden">
-          <a href="#" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</a>
+          <a href="/" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</a>
           <a href="#" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</a>
         </div>
       )}
