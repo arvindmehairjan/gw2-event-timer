@@ -12,7 +12,7 @@ const IceBroodPage = () => {
       <EventBtn/>
 
         <div className="text-center py-5">
-          <h1 className="text-3xl font-bold mb-1">Path of Fire Events</h1>
+          <h1 className="text-3xl font-bold mb-1">Icebrood Saga Events</h1>
         </div>
       </div>
       <Table region="Icebrood Saga" />
