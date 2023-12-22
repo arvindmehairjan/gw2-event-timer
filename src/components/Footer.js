@@ -15,7 +15,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-yellow-500 transition duration-300 ease-in-out"
           >
-            Arvind Mehairjan
+            Arvind Mehairjan.
           </a>
         </p>
       </div>
