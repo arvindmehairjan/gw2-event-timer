@@ -9,7 +9,7 @@ const Footer = () => {
         <p>
           &copy; {currentYear} - Developed by{' '}
           <a
-            href="https://www.example.com"
+            href="https://github.com/arvindmehairjan"
             target="_blank"
             rel="noopener noreferrer"
             className="transition duration-300 ease-in-out hover:text-yellow-500"
