@@ -11,7 +11,7 @@ const Hero = () => {
           to="/core-tyria"
           className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded mt-2 inline-block transition duration-300 ease-in-out"
         >
-          Go to Core Tyria
+          Core Tyria
         </Link>
       </div>
     </div>

@@ -61,7 +61,7 @@ const TableView = (props) => {
           <tr>
             <th className="py-2 px-4 border-b text-left">Boss Name</th>
             <th className="py-2 px-4 border-b text-left">Time Remaining</th>
-            <th className="py-2 px-4 border-b text-left">Linkcode</th>
+            <th className="py-2 px-4 border-b text-left">Waypoint Codes</th>
           </tr>
         </thead>
         <tbody>
@@ -74,7 +74,7 @@ const TableView = (props) => {
                   {upcomingBoss.linkCode ? (
                     <>
                       <button onClick={() => handleCopyToClipboard(upcomingBoss.linkCode)}>
-                        Copy location
+                        Copy code
                       </button>
                       {copiedLink === upcomingBoss.linkCode && (
                         <span style={{ marginLeft: '5px', color: 'green' }}>Copied!</span>
