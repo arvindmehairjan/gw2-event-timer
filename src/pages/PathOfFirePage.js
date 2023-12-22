@@ -16,6 +16,7 @@ const PathOfFirePage = () => {
         </div>
       </div>
       <Table region="Path of Fire" />
+      <EventBtn/>
       <Footer />
     </div>
   );

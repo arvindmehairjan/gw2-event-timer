@@ -16,6 +16,7 @@ const EndOfDragonsPage = () => {
         </div>
       </div>
       <Table region="End of Dragons" />
+      <EventBtn/>
       <Footer />
     </div>
   );

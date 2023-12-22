@@ -16,6 +16,7 @@ const CoreTyriaPage = () => {
         </div>
       </div>
       <Table region="Core Tyria" />
+      <EventBtn/>
       <Footer />
     </div>
   );

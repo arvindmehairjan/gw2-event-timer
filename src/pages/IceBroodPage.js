@@ -16,6 +16,7 @@ const IceBroodPage = () => {
         </div>
       </div>
       <Table region="Icebrood Saga" />
+      <EventBtn/>
       <Footer />
     </div>
   );
