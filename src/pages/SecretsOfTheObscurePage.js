@@ -16,7 +16,6 @@ const SecretsOfTheObscurePage = () => {
         </div>
       </div>
       <Table region="Secrets of The Obscure" />
-      <EventBtn/>
       <Footer />
     </div>
   );

@@ -16,7 +16,6 @@ const LivingWorldPage = () => {
         </div>
       </div>
       <Table region="Living World" />
-      <EventBtn/>
       <Footer />
     </div>
   );

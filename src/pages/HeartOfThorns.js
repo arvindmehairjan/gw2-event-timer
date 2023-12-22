@@ -16,7 +16,6 @@ const HeartOfThornsPage = () => {
         </div>
       </div>
       <Table region="Heart of Thorns" />
-      <EventBtn/>
       <Footer />
     </div>
   );
