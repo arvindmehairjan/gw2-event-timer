@@ -9,6 +9,7 @@ import CoreTyriaPage from './pages/CoreTyriaPage';
 import HeartOfThornsPage from './pages/HeartOfThorns';
 import PathOfFirePage from './pages/PathOfFirePage';
 import IceBroodPage from './pages/IceBroodPage';
+import EndOfDragonsPage from './pages/EndOfDragonsPage';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="heart-of-thorns" element={<HeartOfThornsPage />} />
             <Route path="path-of-fire" element={<PathOfFirePage />} />
             <Route path="icebrood-saga" element={<IceBroodPage />} />
+            <Route path="end-of-dragons" element={<EndOfDragonsPage />} />
           </Routes>
         </BrowserRouter>
     </div>

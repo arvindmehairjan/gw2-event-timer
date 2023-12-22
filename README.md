@@ -1,6 +1,5 @@
 # TODO
-- Add the bosses/events of the expansions/living seasons (EoD, SoTo IBS)
-- Add about/license
+- Add the bosses/events of the expansions/living seasons (SoTo)
 - Configure pipeline with github actions
 - Dockerize
 - Deploy on netlify
