@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
-import TableView from '../components/Table';
+import Table from '../components/Table';
 import Footer from '../components/Footer';
 import EventBtn from '../components/EventBtn';
 
@@ -15,7 +15,7 @@ const CoreTyriaPage = () => {
           <h1 className="text-3xl font-bold mb-1">Core Tyria Events</h1>
         </div>
       </div>
-      <TableView region="Core Tyria" />
+      <Table region="Core Tyria" />
       <Footer />
     </div>
   );

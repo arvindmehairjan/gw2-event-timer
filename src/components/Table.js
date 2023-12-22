@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import jsonData from '../data/events.json';
 
-const TableView = (props) => {
-  const [copiedLink, setCopiedLink] = useState(null);
+const Table = (props) => {
+  const [copiedLinks, setCopiedLinks] = useState({});
   const date = new Date();
   const currentTime = date.getHours() * 60 + date.getMinutes();
   const tyriaRegions = jsonData[props.region];
 
-  const handleCopyToClipboard = (linkCode) => {
+  const handleCopyToClipboard = (linkCode, index) => {
     navigator.clipboard.writeText(linkCode);
-    setCopiedLink(linkCode);
-    setTimeout(() => setCopiedLink(null), 2000);
+    setCopiedLinks((prevCopiedLinks) => ({ ...prevCopiedLinks, [index]: true }));
+    setTimeout(() => setCopiedLinks((prevCopiedLinks) => ({ ...prevCopiedLinks, [index]: false })), 2000);
   };
 
   const formatTime = (time) => {
@@ -21,7 +21,7 @@ const TableView = (props) => {
 
   const isTimeCritical = (timeRemaining) => timeRemaining <= 5;
 
-  const getBossesWithinTimeRange = (entry) => {
+  const getBossesWithinTimeRange = (entry, index) => {
     return entry.spawnTimer
       .filter((eventTime) => {
         const [hours, minutes] = eventTime.split(':').map(Number);
@@ -38,6 +38,7 @@ const TableView = (props) => {
           bossName: entry.bossName,
           timeRemaining: timeDiff,
           linkCode: entry.linkCode || null,
+          index: index,
         };
       });
   };
@@ -58,8 +59,8 @@ const TableView = (props) => {
         </thead>
         <tbody>
           {upcomingBosses.length > 0 ? (
-            upcomingBosses.map((upcomingBoss, index) => (
-              <tr key={index}>
+            upcomingBosses.map((upcomingBoss) => (
+              <tr key={upcomingBoss.index}>
                 <td className={`py-2 px-4 border-b ${isTimeCritical(upcomingBoss.timeRemaining) ? 'text-red-500' : ''}`}>
                   {upcomingBoss.bossName}
                 </td>
@@ -69,10 +70,10 @@ const TableView = (props) => {
                 <td className="py-2 px-4 border-b">
                   {upcomingBoss.linkCode ? (
                     <>
-                      <button onClick={() => handleCopyToClipboard(upcomingBoss.linkCode)} style={{ fontStyle: 'italic' }}>
+                      <button onClick={() => handleCopyToClipboard(upcomingBoss.linkCode, upcomingBoss.index)} style={{ fontStyle: 'italic' }}>
                         Copy code
                       </button>
-                      {copiedLink === upcomingBoss.linkCode && (
+                      {copiedLinks[upcomingBoss.index] && (
                         <span style={{ marginLeft: '5px', color: 'green', fontStyle: 'italic' }}>Copied!</span>
                       )}
                     </>
@@ -95,4 +96,4 @@ const TableView = (props) => {
   );
 };
 
-export default TableView;
+export default Table;
