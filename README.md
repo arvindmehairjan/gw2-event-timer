@@ -8,5 +8,4 @@
 - Deploy on netlify
 - Get custom domain
 - Split into different components
-- Add routing
 - Change favicon and browser title
