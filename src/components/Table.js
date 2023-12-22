@@ -59,8 +59,8 @@ const Table = (props) => {
         </thead>
         <tbody>
           {upcomingBosses.length > 0 ? (
-            upcomingBosses.map((upcomingBoss) => (
-              <tr key={upcomingBoss.index}>
+            upcomingBosses.map((upcomingBoss, index) => (
+              <tr key={`${upcomingBoss.index}-${index}`}>
                 <td className={`py-2 px-4 border-b ${isTimeCritical(upcomingBoss.timeRemaining) ? 'text-red-500' : ''}`}>
                   {upcomingBoss.bossName}
                 </td>
