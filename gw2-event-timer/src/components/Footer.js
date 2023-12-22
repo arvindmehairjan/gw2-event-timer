@@ -2,6 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const githubLink = 'https://github.com/arvindmehairjan';
 
   return (
     <footer className="bg-orange-800 text-white p-4">
@@ -9,10 +10,10 @@ const Footer = () => {
         <p>
           &copy; {currentYear} - Developed by{' '}
           <a
-            href="https://github.com/arvindmehairjan"
+            href={githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition duration-300 ease-in-out hover:text-yellow-500"
+            className="hover:text-yellow-500 transition duration-300 ease-in-out"
           >
             Arvind Mehairjan
           </a>
