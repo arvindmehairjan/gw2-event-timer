@@ -8,6 +8,7 @@ import LivingWorldPage from './pages/LivingWorldPage';
 import CoreTyriaPage from './pages/CoreTyriaPage';
 import HeartOfThornsPage from './pages/HeartOfThorns';
 import PathOfFirePage from './pages/PathOfFirePage';
+import IceBroodPage from './pages/IceBroodPage';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="living-world" element={<LivingWorldPage />} />
             <Route path="heart-of-thorns" element={<HeartOfThornsPage />} />
             <Route path="path-of-fire" element={<PathOfFirePage />} />
+            <Route path="icebrood-saga" element={<IceBroodPage />} />
           </Routes>
         </BrowserRouter>
     </div>
