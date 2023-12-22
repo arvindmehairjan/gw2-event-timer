@@ -21,35 +21,35 @@ const EventBtn = () => {
 
         <Link
           to="/heart-of-thorns"
-          className="bg-neutral-600 hover:bg-neutral-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
+          className="bg-lime-600 hover:bg-lime-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
         >
           Heart of Thorns
         </Link>
 
         <Link
           to="/path-of-fire"
-          className="bg-neutral-600 hover:bg-neutral-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
+          className="bg-orange-600 hover:bg-orange-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
         >
           Path of Fire
         </Link>
 
         <Link
           to="/icebrood-saga"
-          className="bg-neutral-600 hover:bg-neutral-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
+          className="bg-cyan-500 hover:bg-cyan-800 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
         >
           Icebrood Saga
         </Link>
 
         <Link
           to="/end-of-dragons"
-          className="bg-neutral-600 hover:bg-neutral-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
+          className="bg-emerald-500 hover:bg-emerald-800 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
         >
           End of Dragons
         </Link>
 
         <Link
           to="/secrets-of-obscure"
-          className="bg-neutral-600 hover:bg-neutral-900 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
+          className="bg-yellow-600 hover:bg-yellow-800 text-white px-3 py-1 rounded inline-block transition duration-300 ease-in-out mb-3 mr-2"
         >
           Secrets Of The Obscure
         </Link>
