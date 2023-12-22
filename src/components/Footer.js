@@ -5,8 +5,8 @@ const Footer = () => {
   const githubLink = 'https://github.com/arvindmehairjan';
 
   return (
-    <footer className="bg-orange-800 text-white p-4">
-      <div className="container mx-auto text-center">
+    <footer>
+      <div>
         <p>
           &copy; {currentYear} - Developed by{' '}
           <a

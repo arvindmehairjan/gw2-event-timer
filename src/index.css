@@ -18,11 +18,11 @@ code {
 }
 
 footer {
-  background-color: #333;
+  background-color: #7d3618;
   color: #fff;
   padding: 10px;
   text-align: center;
-  position: relative;
-  bottom: -33vh;
+  position: absolute;
   width: 100%;
+  bottom: -15%;
 }
