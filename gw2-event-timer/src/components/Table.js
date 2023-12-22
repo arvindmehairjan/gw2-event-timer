@@ -54,6 +54,8 @@ const TableView = (props) => {
     return `${hours} hours and ${minutes} minutes`;
   };
 
+  const isTimeCritical = timeRemaining => timeRemaining <= 5;
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-300">
@@ -68,8 +70,12 @@ const TableView = (props) => {
           {upcomingBosses.length > 0 ? (
             upcomingBosses.map((upcomingBoss, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b">{upcomingBoss.bossName}</td>
-                <td className="py-2 px-4 border-b">{formatTime(upcomingBoss.timeRemaining)}</td>
+                <td className={`py-2 px-4 border-b ${isTimeCritical(upcomingBoss.timeRemaining) ? 'text-red-500' : ''}`}>
+                  {upcomingBoss.bossName}
+                </td>
+                <td className={`py-2 px-4 border-b ${isTimeCritical(upcomingBoss.timeRemaining) ? 'text-red-500' : ''}`}>
+                  {formatTime(upcomingBoss.timeRemaining)}
+                </td>
                 <td className="py-2 px-4 border-b">
                   {upcomingBoss.linkCode ? (
                     <>
