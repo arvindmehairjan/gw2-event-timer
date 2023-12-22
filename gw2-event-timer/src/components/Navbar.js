@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,13 +14,13 @@ const NavBar = () => {
     <div className="bg-orange-800 text-white p-4">
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center space-x-4">
-        <a href="/" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</a>
-        <a href="/contact" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</a>
+        <Link to="/" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</Link>
+        <Link to="/contact" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</Link>
       </div>
 
       {/* Mobile Menu */}
       <div className="lg:hidden flex items-center justify-between">
-        <a href="/" className="text-xl font-bold"></a>
+        <Link to="/" className="text-xl font-bold"></Link>
         <button
           onClick={toggleMobileMenu}
           className="text-white focus:outline-none lg:hidden"
@@ -39,8 +40,8 @@ const NavBar = () => {
       {/* Mobile Sidebar */}
       {isMobileMenuOpen && (
         <div className="lg:hidden">
-          <a href="/" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</a>
-          <a href="/contact" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</a>
+          <Link to="/" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</Link>
+          <Link to="/contact" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</Link>
         </div>
       )}
     </div>
