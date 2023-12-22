@@ -73,11 +73,22 @@ const TableView = (props) => {
                 <td className="py-2 px-4 border-b">
                   {upcomingBoss.linkCode ? (
                     <>
-                      <button onClick={() => handleCopyToClipboard(upcomingBoss.linkCode)}>
+                      <button
+                        onClick={() => handleCopyToClipboard(upcomingBoss.linkCode)}
+                        style={{ fontStyle: 'italic' }}
+                      >
                         Copy code
                       </button>
                       {copiedLink === upcomingBoss.linkCode && (
-                        <span style={{ marginLeft: '5px', color: 'green' }}>Copied!</span>
+                        <span
+                          style={{
+                            marginLeft: '5px',
+                            color: 'green',
+                            fontStyle: 'italic',
+                          }}
+                        >
+                          Copied!
+                        </span>
                       )}
                     </>
                   ) : (
@@ -88,7 +99,9 @@ const TableView = (props) => {
             ))
           ) : (
             <tr>
-              <td colSpan="3" className="py-4 px-4 text-center">No upcoming events within the next two hours</td>
+              <td colSpan="3" className="py-4 px-4 text-center">
+                No upcoming events within the next two hours
+              </td>
             </tr>
           )}
         </tbody>
