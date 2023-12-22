@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from './pages/Homepage';
-import CoreTyriaPage from './pages/CoreTyria';
+import CoreTyriaPage from './pages/CoreTyriaPage';
 import ContactPage from './pages/ContactPage';
 
 const App = () => {
