@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from './pages/Homepage';
 import CoreTyriaPage from './pages/CoreTyria';
+import ContactPage from './pages/ContactPage';
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />}/>
+            <Route path="contact" element={<ContactPage />} />
             <Route path="core-tyria" element={<CoreTyriaPage />} />
           </Routes>
         </BrowserRouter>

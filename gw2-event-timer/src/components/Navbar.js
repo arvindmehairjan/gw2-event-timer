@@ -14,7 +14,7 @@ const NavBar = () => {
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center space-x-4">
         <a href="/" className="hover:text-gray-300 transition duration-300 ease-in-out">Home</a>
-        <a href="#" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</a>
+        <a href="/contact" className="hover:text-orange-300 transition duration-300 ease-in-out">Contact</a>
       </div>
 
       {/* Mobile Menu */}
@@ -40,7 +40,7 @@ const NavBar = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden">
           <a href="/" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Home</a>
-          <a href="#" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</a>
+          <a href="/contact" className="block px-4 py-2 transition duration-300 ease-in-out hover:text-yellow-300">Contact</a>
         </div>
       )}
     </div>
