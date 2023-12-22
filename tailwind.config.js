@@ -1,9 +1,10 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './public/**/*.html',
-    './src/components/*.{js,jsx,ts,tsx,vue}',
-    './src/pages/*.{js,jsx,ts,tsx,vue}',
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  // other Tailwind CSS configurations go here
-};
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
